@@ -118,7 +118,7 @@ try {
 
     if ($PSBoundParameters.ContainsKey('App')) {
         # Start app
-        $Process = Start-Process -FilePath $App -PassThru
+        $Process = Start-Process -FilePath $App 
     }
 
     if ($Mode -eq "replay") {
@@ -137,6 +137,11 @@ try {
     }
 } finally {
     Write-Host "Stopping trace, please wait..."
+
+    # Stop fraps recording
+    $wshell.SendKeys("^+b");
+    Start-Sleep -Seconds 1
+    Write-Host "Fraps benchmark stopped."
 
     if ($PSBoundParameters.ContainsKey('App')) {
         # Stop app after tracing
