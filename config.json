@@ -6,7 +6,7 @@
     "BMMetrics": ["BATTERY_PROPERTY_CURRENT_NOW", "EXTRA_VOLTAGE"],
     "OVRGPUMetrics": ["1", "2", "3", "4"]
   },
-  "repetitions": 1,
+  "repetitions": 2,
   "apps": [
     {
       "name": "Phasmophobia",
@@ -19,6 +19,6 @@
       "trace_path": "BS-PopStars\\PopStars.txt"
     }
   ],
-  "time_between_apps": 10,
-  "time_between_repetitions": 10
+  "time_between_apps": 5,
+  "time_between_repetitions": 5
 }

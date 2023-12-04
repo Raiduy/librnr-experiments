@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+from time import sleep
 
 STEAM_HOME = "steam\\test\\"
 TRACES_HOME = "traces\\test\\"
@@ -30,6 +31,8 @@ def main():
                       '-OVRGPUMetrics "' + ','.join(config['metrics']['OVRGPUMetrics']) + '" '
             print(command)
             print()
+            sleep(config["time_between_repetitions"])
+        sleep(config["time_between_apps"])
         
 
 if __name__ == "__main__":
