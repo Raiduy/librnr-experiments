@@ -81,7 +81,7 @@ $functions = {
             Write-Host "Stopping OVR GPU monitor..."
             Stop-Job $OVRGPUJob
             
-            adb logcat -d | findstr BatteryMgr >> "$OutDir\battery_manager_c2.log"
+            adb logcat -d | findstr BatteryMgr >> "$OutDir\battery_manager.log"
             Start-Sleep -Seconds 5
             Write-Host "Done collecting BatteryManager metrics."
         }
@@ -99,8 +99,10 @@ function Get-Duration([System.IO.FileInfo]$TraceFile) {
 try {
     $modeFilePath = "$env:LOCALAPPDATA\librnr\config.txt"
 
-    # Clear logcat buffer
+    # Increase logcat buffer size
     adb logcat -G 16M
+    
+    # Clear logcat buffer
     adb logcat -c
 
     # Start BatteryManager logging
