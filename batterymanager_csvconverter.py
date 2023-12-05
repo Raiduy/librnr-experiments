@@ -40,9 +40,9 @@ def get_data(file):
 
     return data
 
-def main():
-    cols = get_column_names(RAW_DATA)
-    data = get_data(RAW_DATA)
+def generate_csv(data_path):
+    cols = get_column_names(data_path)
+    data = get_data(data_path)
     df = pd.DataFrame(data, columns=cols)
     # df.to_csv('test-paul-controls-bs3/batterymanager.csv', index=False)
     df['Timestamp'] = np.int64(df['Timestamp'])
@@ -50,8 +50,26 @@ def main():
     df['EXTRA_VOLTAGE'] = np.int64(df['EXTRA_VOLTAGE'])
     df = preprocess_values(df)
     df = calculate_power(df)
-    print(RAW_DATA)
-    print("Energy (J) = ", trapezoid_method(df))
+    # print(RAW_DATA)
+    # print("Energy (J) = ", trapezoid_method(df))
+    # df.to_csv(data_path.strip('.log') + '.csv', index=False)
+    return df
+
+def main():
+    df_aggregated = pd.DataFrame(columns=['app', 'app_details', 'is_record', 'is_wireless', 'repetition', 'energy(J)'])
+    for root, dirs, files in os.walk(".", topdown=False):
+        for name in files:
+            if name == 'battery_manager.log':
+                # print(os.path.join(root, name))
+                energy = trapezoid_method(generate_csv(os.path.join(root, name)))
+                app = root.split('\\')[1].strip('-W')
+                app_details = root.split('\\')[2]
+                is_record = 'record' in root.split('\\')[3]
+                is_wireless = 'W' in app
+                repetition = root.split('\\')[3].strip('record') if 'record' in root.split('\\')[3] else root.split('\\')[3].strip('replay')
+                df_aggregated = pd.concat([df_aggregated, pd.DataFrame([[app, app_details, is_record, is_wireless, repetition, energy]], columns=['app', 'app_details', 'is_record', 'is_wireless', 'repetition', 'energy(J)'])])
+    print(df_aggregated)
+
 
 if __name__ == '__main__':
     main()
