@@ -80,8 +80,9 @@ $functions = {
             Stop-Job $HostJob
             Write-Host "Stopping OVR GPU monitor..."
             Stop-Job $OVRGPUJob
-            Write-Host "Collecting BatteryManager metrics..."
-            adb logcat -d | findstr BatteryMgr >> "$OutDir\battery_manager.log"
+            
+            adb logcat -d | findstr BatteryMgr >> "$OutDir\battery_manager_c2.log"
+            Start-Sleep -Seconds 5
             Write-Host "Done collecting BatteryManager metrics."
         }
     }
@@ -99,6 +100,7 @@ try {
     $modeFilePath = "$env:LOCALAPPDATA\librnr\config.txt"
 
     # Clear logcat buffer
+    adb logcat -G 16M
     adb logcat -c
 
     # Start BatteryManager logging
@@ -106,6 +108,10 @@ try {
     adb shell am start-foreground-service -n "com.example.batterymanager_utility/com.example.batterymanager_utility.DataCollectionService" --ei sampleRate $BMSampleRate --es "dataFields" "$BMMetrics" --ez toCSV False
     Write-Host "Starting BatteryManager logging... Sleep for 5 seconds to allow BatteryManager to start."
     Start-Sleep -Seconds 5
+
+    ## Play sound to indicate start of trace
+    # [System.Media.SystemSounds]::Asterisk.Play()
+
 
     # Create the output directory, if needed
     New-Item $OutDir -ItemType Directory -Force | Out-Null
@@ -118,7 +124,7 @@ try {
 
     if ($PSBoundParameters.ContainsKey('App')) {
         # Start app
-        $Process = Start-Process -FilePath $App 
+        $Process = Start-Process -FilePath $App -PassThru
     }
 
     if ($Mode -eq "replay") {
@@ -138,11 +144,6 @@ try {
 } finally {
     Write-Host "Stopping trace, please wait..."
 
-    # Stop fraps recording
-    $wshell.SendKeys("^+b");
-    Start-Sleep -Seconds 1
-    Write-Host "Fraps benchmark stopped."
-
     if ($PSBoundParameters.ContainsKey('App')) {
         # Stop app after tracing
         Stop-Process $Process.Id -Force -ErrorAction SilentlyContinue
@@ -152,6 +153,7 @@ try {
     Stop-Job $TraceJob
 
     # Stop BatteryManager logging
+    Write-Host "Stopping BatteryManager logging..."
     adb shell am stopservice com.example.batterymanager_utility/com.example.batterymanager_utility.DataCollectionService
 
     # Plot results

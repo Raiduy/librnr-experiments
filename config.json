@@ -1,22 +1,17 @@
 {
-  "experiment_name": "test",
+  "experiment_name": "test7",
   "experiment_description": "test",
   "metrics": {
-    "BMSampleRate": "500",
+    "BMSampleRate": "1000",
     "BMMetrics": ["BATTERY_PROPERTY_CURRENT_NOW", "EXTRA_VOLTAGE"],
     "OVRGPUMetrics": ["1", "2", "3", "4"]
   },
   "repetitions": 2,
   "apps": [
     {
-      "name": "Phasmophobia",
-      "exe_path": "Phasmophobia\\Phasmophobia.exe",
-      "trace_path": "Phasmophobia\\Phasmophobia.txt"
-    },
-    {
       "name": "BeatSaber",
-      "exe_path": "Beat Saber\\Beat Saber.exe",
-      "trace_path": "BS-PopStars\\PopStars.txt"
+      "exe_path": "\\Beat Saber\\Beat Saber.exe",
+      "trace_path": "\\BS-PopStars\\PopStars.txt"
     }
   ],
   "time_between_apps": 5,
