@@ -56,18 +56,19 @@ def generate_csv(data_path):
     return df
 
 def main():
-    df_aggregated = pd.DataFrame(columns=['app', 'app_details', 'is_record', 'is_wireless', 'repetition', 'energy(J)'])
+    df_aggregated = pd.DataFrame(columns=['device', 'app', 'app_details', 'is_record', 'is_wireless', 'repetition', 'energy(J)'])
     for root, dirs, files in os.walk(".", topdown=False):
         for name in files:
             if name == 'battery_manager.log':
                 # print(os.path.join(root, name))
                 energy = trapezoid_method(generate_csv(os.path.join(root, name)))
-                app = root.split('\\')[1].strip('-W')
-                app_details = root.split('\\')[2]
-                is_record = 'record' in root.split('\\')[3]
-                is_wireless = 'W' in root.split('\\')[1]
-                repetition = root.split('\\')[3].strip('record') if 'record' in root.split('\\')[3] else root.split('\\')[3].strip('replay')
-                df_aggregated = pd.concat([df_aggregated, pd.DataFrame([[app, app_details, is_record, is_wireless, repetition, energy]], columns=['app', 'app_details', 'is_record', 'is_wireless', 'repetition', 'energy(J)'])])
+                device = root.split('\\')[1]
+                app = root.split('\\')[2].strip('-W')
+                app_details = root.split('\\')[3]
+                is_record = 'record' in root.split('\\')[4]
+                is_wireless = 'W' in root.split('\\')[2]
+                repetition = root.split('\\')[4].strip('record') if 'record' in root.split('\\')[4] else root.split('\\')[4].strip('replay')
+                df_aggregated = pd.concat([df_aggregated, pd.DataFrame([[device, app, app_details, is_record, is_wireless, repetition, energy]], columns=['device', 'app', 'app_details', 'is_record', 'is_wireless', 'repetition', 'energy(J)'])])
     print(df_aggregated)
 
 

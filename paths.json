@@ -1,0 +1,5 @@
+{
+    "TRACES_HOME": "<path to your traces followed by \\>",
+    "STEAM_HOME": "<path to your steam commons folder followed by \\>",
+    "RUN_BENCH": "<path to your runbench.ps1 file>"
+}
