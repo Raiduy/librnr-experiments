@@ -1,6 +1,6 @@
 {
   "experiment_description": "test",
-  "device": "Quest2",
+  "device": "Quest-2",
   "metrics": {
     "BMSampleRate": "1000",
     "BMMetrics": ["BATTERY_PROPERTY_CURRENT_NOW", "EXTRA_VOLTAGE"],

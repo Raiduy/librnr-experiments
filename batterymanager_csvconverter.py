@@ -66,7 +66,7 @@ def main():
                 app = root.split('\\')[2].strip('-W')
                 app_details = root.split('\\')[3]
                 is_record = 'record' in root.split('\\')[4]
-                is_wireless = 'W' in root.split('\\')[2]
+                is_wireless = '-W' in root.split('\\')[2]
                 repetition = root.split('\\')[4].strip('record') if 'record' in root.split('\\')[4] else root.split('\\')[4].strip('replay')
                 df_aggregated = pd.concat([df_aggregated, pd.DataFrame([[device, app, app_details, is_record, is_wireless, repetition, energy]], columns=['device', 'app', 'app_details', 'is_record', 'is_wireless', 'repetition', 'energy(J)'])])
     print(df_aggregated)
