@@ -1,0 +1,19 @@
+{
+  "experiment_description": "test",
+  "device": "Quest2",
+  "metrics": {
+    "BMSampleRate": "1000",
+    "BMMetrics": ["BATTERY_PROPERTY_CURRENT_NOW", "EXTRA_VOLTAGE"],
+    "OVRGPUMetrics": ["1", "2", "3", "4"]
+  },
+  "repetitions": 3,
+  "apps": [
+    {
+      "name": "BeatSaber",
+      "exe_path": "Beat Saber\\Beat Saber.exe",
+      "trace_path": "BeatSaber\\PopStars-Hard\\record0\\PopStars-Hard.txt"
+    }
+  ],
+  "time_between_apps": 5,
+  "time_between_repetitions": 5
+}
