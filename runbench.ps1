@@ -99,6 +99,9 @@ function Get-Duration([System.IO.FileInfo]$TraceFile) {
 try {
     $modeFilePath = "$env:LOCALAPPDATA\librnr\config.txt"
 
+    # Set librnr to configured mode
+    Set-Content -Path $modeFilePath -Value "$Mode $TraceFile"
+
     # Increase logcat buffer size
     adb logcat -G 16M
     
@@ -117,9 +120,6 @@ try {
 
     # Create the output directory, if needed
     New-Item $OutDir -ItemType Directory -Force | Out-Null
-
-    # Set librnr to configured mode
-    Set-Content -Path $modeFilePath -Value "$Mode $TraceFile"
 
     # Start tracing
     $TraceJob = Start-Job -InitializationScript $functions -ScriptBlock { Trace-Metrics $using:OutDir $using:PSScriptRoot }
