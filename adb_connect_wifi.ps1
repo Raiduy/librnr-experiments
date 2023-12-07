@@ -1,3 +1,6 @@
+# Start the BatteryManager app
+adb shell am start -n "com.example.batterymanager_utility/com.example.batterymanager_utility.MainActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
+
 # Get IP address of the device
 $ipAddress = adb shell ip -f inet addr show wlan0 | Select-String -Pattern 'inet\s+\d+\.\d+\.\d+\.\d+' | ForEach-Object { $_ -replace '.*inet\s+(\d+\.\d+\.\d+\.\d+).*', '$1' }
 
