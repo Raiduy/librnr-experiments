@@ -1,6 +1,6 @@
 {
   "experiment_description": "test",
-  "device": "Quest-Pro",
+  "device": "Quest-2",
   "metrics": {
     "BMSampleRate": "1000",
     "BMMetrics": ["BATTERY_PROPERTY_CURRENT_NOW", "EXTRA_VOLTAGE"],
@@ -9,9 +9,9 @@
   "repetitions": 3,
   "apps": [
     {
-      "name": "BeatSaber",
-      "exe_path": "Beat Saber\\Beat Saber.exe",
-      "trace_path": "BeatSaber-W\\PopStars-Easy\\record0\\PopStars-Easy.txt"
+      "name": "Phasmophobia",
+      "exe_path": "Phasmophobia\\Phasmophobia.exe",
+      "trace_path": "Phasmophobia\\Jenga\\record0\\Jenga.txt"
     }
   ],
   "time_between_apps": 5,

@@ -4,6 +4,7 @@ import json
 import subprocess
 from time import sleep
 
+STEAM_HOME = "C:\\Program Files (x86)\\Steam\\steamapps\\common"
 
 def main():
     # get full path of current folder
@@ -25,8 +26,9 @@ def main():
 
             command = RUN_BENCH + ' -Mode "replay" ' + \
                       '-TraceFile "' + TRACE_PATH + '" ' + \
+                      '-App "' + STEAM_HOME + app['exe_path'] + '" ' + \
                       '-OutDir "' + OUTPUT_DIR + str(i) + '"'
-                      # '-App "' + STEAM_HOME + app['exe_path'] + '" ' + \
+            
             print(command)
             p = subprocess.Popen(['powershell.exe', command], stdout=sys.stdout)
             p.communicate()
