@@ -9,9 +9,9 @@
   "repetitions": 3,
   "apps": [
     {
-      "name": "Phasmophobia",
+      "name": "Phasmophobia-W",
       "exe_path": "Phasmophobia\\Phasmophobia.exe",
-      "trace_path": "Phasmophobia\\Jenga\\record0\\Jenga.txt"
+      "trace_path": "Phasmophobia-W\\Jenga\\record0\\Jenga.txt"
     }
   ],
   "time_between_apps": 5,
