@@ -11,7 +11,7 @@
     {
       "name": "BeatSaber",
       "exe_path": "Beat Saber\\Beat Saber.exe",
-      "trace_path": "BeatSaber\\PopStars-Hard\\record0\\PopStars-Hard.txt"
+      "trace_path": "BeatSaber-W\\PopStars-Easy\\record0\\PopStars-Easy.txt"
     }
   ],
   "time_between_apps": 5,

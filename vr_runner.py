@@ -20,8 +20,8 @@ def main():
         TRACE_PATH = os.path.join(current_dir, config["device"], app["trace_path"])
         for i in range(config["repetitions"]):
             OUTPUT_DIR = os.path.join(OUTPUT_DIR, TRACE_PATH.split("record")[0] + "replay" +  TRACE_PATH.split("record")[1][0] + ".")
-            if not os.path.exists(OUTPUT_DIR):
-                os.makedirs(OUTPUT_DIR)
+            # if not os.path.exists(OUTPUT_DIR):
+            #     os.makedirs(OUTPUT_DIR)
 
             command = RUN_BENCH + ' -Mode "replay" ' + \
                       '-TraceFile "' + TRACE_PATH + '" ' + \
