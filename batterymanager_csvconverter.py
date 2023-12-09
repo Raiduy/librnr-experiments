@@ -70,6 +70,7 @@ def main():
                 repetition = root.split('\\')[4].strip('record') if 'record' in root.split('\\')[4] else root.split('\\')[4].strip('replay')
                 df_aggregated = pd.concat([df_aggregated, pd.DataFrame([[device, app, app_details, is_record, is_wireless, repetition, energy]], columns=['device', 'app', 'app_details', 'is_record', 'is_wireless', 'repetition', 'energy(J)'])])
     print(df_aggregated)
+    df_aggregated.to_csv('energy.csv', index=False)
 
 
 if __name__ == '__main__':
