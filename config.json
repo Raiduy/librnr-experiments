@@ -6,7 +6,7 @@
     "BMMetrics": ["BATTERY_PROPERTY_CURRENT_NOW", "EXTRA_VOLTAGE"],
     "OVRGPUMetrics": ["1", "2", "3", "4"]
   },
-  "repetitions": 3,
+  "repetitions": 1,
   "apps": [
     {
       "name": "Phasmophobia-W",
