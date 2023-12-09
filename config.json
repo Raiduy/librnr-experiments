@@ -6,12 +6,12 @@
     "BMMetrics": ["BATTERY_PROPERTY_CURRENT_NOW", "EXTRA_VOLTAGE"],
     "OVRGPUMetrics": ["1", "2", "3", "4"]
   },
-  "repetitions": 2,
+  "repetitions": 1,
   "apps": [
     {
-      "name": "Phasmophobia",
-      "exe_path": "Phasmophobia\\Phasmophobia.exe",
-      "trace_path": "Phasmophobia\\Jenga\\record0\\Jenga.txt"
+      "name": "BeatSaber",
+      "exe_path": "Pistol Whip\\Pistol Whip.exe",
+      "trace_path": "BeatSaber-W\\PopStars-Hard\\record0\\PopStars-Hard.txt"
     }
   ],
   "time_between_apps": 5,
