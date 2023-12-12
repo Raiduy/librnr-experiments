@@ -124,7 +124,7 @@ try {
     $TraceJob = Start-Job -InitializationScript $functions -ScriptBlock { Trace-Metrics $using:OutDir $using:PSScriptRoot }
 
     if ($PSBoundParameters.ContainsKey('SteamAppID') -and $PSBoundParameters.ContainsKey('AppStartupTime')) {
-        # Start app
+        # Start app via steam. Requires Steam directory to be in the environment variable paths.
         steam steam://rungameid/$SteamAppID
         Write-Host "Starting app... Sleep for $AppStartupTime seconds to allow app to start."
         Start-Sleep -Seconds $AppStartupTime

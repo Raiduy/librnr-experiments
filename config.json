@@ -1,17 +1,22 @@
 {
-  "experiment_description": "test",
+  "experiment_name": "full-test",
   "device": "Quest-2",
-  "metrics": {
-    "BMSampleRate": "1000",
-    "BMMetrics": ["BATTERY_PROPERTY_CURRENT_NOW", "EXTRA_VOLTAGE"],
-    "OVRGPUMetrics": ["1", "2", "3", "4"]
+  "clumsy": {
+    "clumsy_scripts_path": "C:\\Users\\radua\\VU_Ams\\MSc\\P2\\DS\\LabProject\\DistributedSystems-Traffic-Shaper\\Clumsy-Scripts\\",
+    "clumsy_path": "C:\\Program Files\\Clumsy\\clumsy.exe",
+    "delay": -1,
+    "delay_chance": -1,
+    "bandwidth_KBps": 45000,
+    "drop_chance": -1
   },
-  "repetitions": 1,
+  "repetitions": 5,
   "apps": [
     {
-      "name": "Phasmophobia-W",
-      "exe_path": "Phasmophobia\\Phasmophobia.exe",
-      "trace_path": "Phasmophobia-W\\Jenga\\record0\\Jenga.txt"
+      "name": "BeatSaber",
+      "exe_name": "Beat Saber.exe",
+      "steam_app_id": "620980",
+      "startup_time": 15,
+      "trace_path": "BeatSaber\\PopStars-Easy\\record0\\PopStars-Easy.txt"
     }
   ],
   "time_between_apps": 5,
