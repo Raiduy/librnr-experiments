@@ -4,7 +4,6 @@ import json
 import subprocess
 from time import sleep
 
-STEAM_HOME = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\"
 
 def start_clumsy(clumsy):
     command = clumsy["clumsy_scripts_path"] + "start-clumsy.ps1 " + \
@@ -22,10 +21,13 @@ def start_clumsy(clumsy):
     p = subprocess.Popen(['powershell.exe', command], stdout=sys.stdout)
     p.communicate()
 
+
 def stop_clumsy(clumsy):
     command = clumsy["clumsy_scripts_path"] + "stop-clumsy.ps1"
     p = subprocess.Popen(['powershell.exe', command], stdout=sys.stdout)
     p.communicate()
+
+
 def main():
     # get full path of current folder
     current_dir = os.path.dirname(os.path.realpath(__file__))
@@ -34,7 +36,7 @@ def main():
     with open(config_file) as f:
         config = json.load(f)
 
-    # start_clumsy(config["clumsy"])
+    start_clumsy(config["clumsy"])
 
     OUTPUT_DIR = os.path.join(current_dir, config["experiment_name"], config["device"])
     RUN_BENCH = os.path.join(current_dir, "runbench.ps1")
@@ -45,28 +47,27 @@ def main():
         OUTPUT_DIR = os.path.join(OUTPUT_DIR, "replay" +  TRACE_PATH.split("record")[1][0] + ".")
 
         for i in range(config["repetitions"]):
-
-
             command = RUN_BENCH + ' -Mode "replay" ' + \
                       '-TraceFile "' + TRACE_PATH + '" ' + \
                       '-OutDir "' + OUTPUT_DIR + str(i) + '" ' + \
                       '-SteamAppID "' + app['steam_app_id'] + '" ' + \
                       '-SteamAppExe "' + app['exe_name'] + '" ' + \
                       '-AppStartupTime ' + str(app['startup_time'])
-
-                      # '-App "' + STEAM_HOME + app['exe_path'] + '" ' + \
             
             print(command)
-            # p = subprocess.Popen(['powershell.exe', command], stdout=sys.stdout)
-            # p.communicate()
-            # copy config.json to output directory
-            # with open(os.path.join(OUTPUT_DIR + str(i), "config.json"), 'w') as outfile:
-            #     json.dump(config, outfile, indent=4)
+            p = subprocess.Popen(['powershell.exe', command], stdout=sys.stdout)
+            p.communicate()
+
             print("Stop app")
+
             sleep(config["time_between_repetitions"])
         sleep(config["time_between_apps"])
     
-    # stop_clumsy(config["clumsy"])
+    # copy config.json to experiment directory
+    with open(os.path.join(current_dir, config['experiment_name'], "config.json"), 'w') as outfile:
+        json.dump(config, outfile, indent=4)
+
+    stop_clumsy(config["clumsy"])
 
 
 if __name__ == "__main__":
