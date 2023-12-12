@@ -43,7 +43,7 @@ $functions = {
                 if ($HostJob.State -ne "Running")
                 {
                     Write-Host "Oh no! Restarting python script"
-                    $HostJob = Start-Job -ScriptBlock { C:/Users/radua/AppData/Local/Programs/Python/Python312/python.exe "$using:PSScriptRoot\sample-host-metrics.py" $using:OutDir }
+                    $HostJob = Start-Job -ScriptBlock { python "$using:PSScriptRoot\sample-host-metrics.py" $using:OutDir }
                 }
                 if ($OVRGPUJob.State -ne "Running")
                 {
