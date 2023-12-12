@@ -2,6 +2,9 @@ param (
     [Parameter(Mandatory)][System.IO.FileInfo]$TraceFile,
     [Parameter(Mandatory)][System.IO.FileInfo]$OutDir,
     [System.IO.FileInfo]$App,
+    [System.String]$SteamAppID,
+    [System.String]$SteamAppExe,
+    [System.Int16]$AppStartupTime, # in seconds
     [ValidateNotNullOrEmpty()][ValidateSet('record', 'replay')][System.String]$Mode = "replay",
     [ValidateNotNullOrEmpty()][System.String]$BMSampleRate = "1000",  # in milliseconds, how often to sample BatteryManager
     [ValidateNotNullOrEmpty()][System.String]$BMMetrics = "BATTERY_PROPERTY_CURRENT_NOW,EXTRA_VOLTAGE", # comma-separated list of BatteryManager metrics to sample, see https://developer.android.com/reference/android/os/BatteryManager
@@ -40,7 +43,7 @@ $functions = {
                 if ($HostJob.State -ne "Running")
                 {
                     Write-Host "Oh no! Restarting python script"
-                    $HostJob = Start-Job -ScriptBlock { C:/Users/radua/AppData/Local/Programs/Python/Python312/python.exe "$using:PSScriptRoot\sample-host-metrics.py" $using:OutDir }
+                    $HostJob = Start-Job -ScriptBlock { python "$using:PSScriptRoot\sample-host-metrics.py" $using:OutDir }
                 }
                 if ($OVRGPUJob.State -ne "Running")
                 {
@@ -120,7 +123,12 @@ try {
     # Start tracing
     $TraceJob = Start-Job -InitializationScript $functions -ScriptBlock { Trace-Metrics $using:OutDir $using:PSScriptRoot }
 
-    if ($PSBoundParameters.ContainsKey('App')) {
+    if ($PSBoundParameters.ContainsKey('SteamAppID') -and $PSBoundParameters.ContainsKey('AppStartupTime')) {
+        # Start app via steam. Requires Steam directory to be in the environment variable paths.
+        steam steam://rungameid/$SteamAppID
+        Write-Host "Starting app... Sleep for $AppStartupTime seconds to allow app to start."
+        Start-Sleep -Seconds $AppStartupTime
+    } elseif ($PSBoundParameters.ContainsKey('App')) {
         # Start app
         $Process = Start-Process -FilePath $App -PassThru
     }
@@ -142,9 +150,12 @@ try {
 } finally {
     Write-Host "Stopping trace, please wait..."
 
-    if ($PSBoundParameters.ContainsKey('App')) {
+    if ($PSBoundParameters.ContainsKey('SteamAppExe')) {
         # Stop app after tracing
-        Stop-Process $Process.Id -Force -ErrorAction SilentlyContinue
+        taskkill.exe /F /IM "$SteamAppExe"
+    } elseif ($PSBoundParameters.ContainsKey('App')) {
+        # Stop app after tracing
+        Stop-Process -Id $Process.Id -Force -ErrorAction SilentlyContinue
     }
 
     # Stop tracing
