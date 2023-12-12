@@ -9,13 +9,13 @@
     "bandwidth_KBps": -1,
     "drop_chance": 0.025
   },
-  "repetitions": 5,
+  "repetitions": 1,
   "apps": [
     {
       "name": "BeatSaber-W",
       "exe_name": "Beat Saber.exe",
       "steam_app_id": "620980",
-      "startup_time": 15,
+      "startup_time": 3,
       "trace_path": "BeatSaber-W\\PopStars-Medium\\record0\\PopStars-Medium.txt"
     }
   ],
