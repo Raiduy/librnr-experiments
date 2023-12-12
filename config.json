@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "experiment_description": "test",
   "device": "Quest-2",
   "metrics": {
@@ -12,6 +13,26 @@
       "name": "Phasmophobia-W",
       "exe_path": "Phasmophobia\\Phasmophobia.exe",
       "trace_path": "Phasmophobia-W\\Jenga\\record0\\Jenga.txt"
+=======
+  "experiment_name": "full-test",
+  "device": "Quest-Pro",
+  "clumsy": {
+    "clumsy_scripts_path": "C:\\Users\\damla\\Documents\\GitHub\\DistributedSystems-Traffic-Shaper\\Clumsy-Scripts\\",
+    "clumsy_path": "C:\\Program Files\\Clumsy\\clumsy.exe",
+    "delay": -1,
+    "delay_chance": -1,
+    "bandwidth_KBps": 45000,
+    "drop_chance": -1
+  },
+  "repetitions": 2,
+  "apps": [
+    {
+      "name": "BeatSaber",
+      "exe_name": "Beat Saber.exe",
+      "steam_app_id": "620980",
+      "startup_time": 10,
+      "trace_path": "BeatSaber\\PopStars-Easy\\record0\\PopStars-Easy.txt"
+>>>>>>> Stashed changes
     }
   ],
   "time_between_apps": 5,
