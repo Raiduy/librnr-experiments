@@ -16,7 +16,27 @@ adb shell am start -n "com.example.batterymanager_utility/com.example.batteryman
 10. Launch Quest Link.
 
 ## Using vr_runner.py
+### Before running the script
+* Add the steam folder to the environment variable `Path`. (`C:\Program Files (x86)\Steam`)
+* Clone Vlad's [traffic shaper repo](https://github.com/Vlad2000Andrei/DistributedSystems-Traffic-Shaper)
+* Install clumsy as per [his instructions](https://github.com/Vlad2000Andrei/DistributedSystems-Traffic-Shaper/blob/main/README.md).
+* Configure the `config.json` file.
+
+### Configuring the `config.json` file
+* `experiment_name`: The name of the experiment. This will be used to create a directory with the same name as the experiment and all results will be stored there under the same file conventions as before.
+* `clumsy`
+  * `clumsy_scripts_path`: The path to the folder containing the clumsy scripts in Vlad's traffic shaper.
+  * `clumsy_path`: Path to the clumsy executable.
+  * `delay`, `delay_chance`, `bandwidth_KBps`, `drop_chance`: The values for the clumsy script. `-1` means disabled.
+* `apps`
+  * `name`: The name of the app. This will be used to create a directory with the same name as the app and all results will be stored there under the same file conventions as before.
+  * `exe_name`: The name of the executable for the app. This is used by the `runbench.ps1` script to stop the app.
+  * `steam_app_id`: ID of the app on Steam. This is used by the `runbench.ps1` script to start the app. The ID can be found on the app's Steam page >> Settings (Cog wheel) >> Properties >> Updates >> AppID (Below Background downloads).
+  * `startup_time`: The time in seconds to wait for the app to start.
+
+
+### Running the script
 1. Open PowerShell with admin privileges.
 2. Find the `python.exe` path for your python version Run `<your-python.exe-path> vr_runner.py` to start the script.
-3. The script will use the `config.json` file to determine which experiments to run. Since Beat Saber cannot be launched and stopped via the command line reliably yet, it is recommended to launch Beat Saber manually when the `Starting BatteryManager logging... Sleep for 5 seconds to allow BatteryManager to start.` output is shown, and stop Beat Saber when the `Stopping trace, please wait...` output is shown.
-4. After the script is done, you will be able to find a copy of the `config.json` file in the directory with the same name as the `experiment_name` in the config file. The directory will also contain each run of the experiment along with all the data associated with it.
+3. The script will use the `config.json` file to determine which experiments to run.
+4. First the script will launch `clumsy` with the specified parameters, then `runbench.ps1`. The application should start shortly after the `Sleep 5 seconds...BatteryManager`. When the trace is done replaying, the app will automatically close (be patient). After all the iterations are done, the script will close `clumsy` and copy the config file to the experiment directory.
