@@ -9,7 +9,7 @@
     "bandwidth_KBps": -1,
     "drop_chance": 0.025
   },
-  "repetitions": 1,
+  "repetitions": 5,
   "apps": [
     {
       "name": "BeatSaber-W",
