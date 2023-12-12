@@ -1,18 +1,6 @@
-param (
-    # [System.IO.FileInfo]$App
-    [System.String]$App
-)
+# steam steam://rungameid/620980
+steam steam://rungameid/739630
 
-try {
-    $AppExe = [string]($App.Split("\")[-1])
-    $App
-    Write-Host "AppExe: $AppExe"
-    Write-Host "Process: $Process"
-
-    Start-Sleep -Seconds 10
-    taskkill.exe /F /IM $AppExe
-}
-catch {
-    Write-Error "App not found: $App"
-    exit 1
-}
+Start-Sleep -Seconds 25
+# taskkill.exe /F /IM "Beat Saber.exe"
+taskkill.exe /F /IM "Phasmophobia.exe"
