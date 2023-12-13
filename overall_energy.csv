@@ -1,4 +1,4 @@
-device,app,app_details,is_record,is_wireless,repetition,energy(J),length(s),Energy per Second (J/s)
+device,app,app_details,is_record,is_wireless,repetition,energy [J],length [s],Power Draw [W]
 Quest-2,BeatSaber,PopStars-Easy,True,False,0,868.5698766496746,248.156,3.500096216290054
 Quest-2,BeatSaber,PopStars-Easy,False,False,0.0,918.1128233589806,245.407,3.7411843319831157
 Quest-2,BeatSaber,PopStars-Easy,False,False,0.1,925.8252327505625,245.064,3.7778916232109263
