@@ -8,7 +8,7 @@ from time import sleep
 def start_clumsy(clumsy):
     command = clumsy["clumsy_scripts_path"] + "start-clumsy.ps1 " + \
               "-ClumsyPath \"" + clumsy["clumsy_path"] + "\" " + \
-              "-AffectUpload $true "
+              "-AffectUpload $true  -AffectDownload $true "
     if clumsy["delay"] != -1:
         command += "-Delay " + str(clumsy["delay"]) + " "
     if clumsy["delay_chance"] != -1:
