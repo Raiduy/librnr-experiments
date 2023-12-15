@@ -36,7 +36,8 @@ def main():
     with open(config_file) as f:
         config = json.load(f)
 
-    start_clumsy(config["clumsy"])
+    if "clumsy" in config:
+        start_clumsy(config["clumsy"])
 
     OUTPUT_DIR = os.path.join(current_dir, config["experiment_name"], config["device"])
     RUN_BENCH = os.path.join(current_dir, "runbench.ps1")
@@ -67,7 +68,8 @@ def main():
     with open(os.path.join(current_dir, config['experiment_name'], "config.json"), 'w') as outfile:
         json.dump(config, outfile, indent=4)
 
-    stop_clumsy(config["clumsy"])
+    if "clumsy" in config:
+        stop_clumsy(config["clumsy"])
 
 
 if __name__ == "__main__":
