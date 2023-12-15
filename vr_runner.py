@@ -44,13 +44,13 @@ def main():
 
     for app in config["apps"]:
         TRACE_PATH = os.path.join(current_dir, config['experiment_name'], config["device"], app["trace_path"])
-        OUTPUT_DIR = os.path.join(OUTPUT_DIR, app["name"], app["variation"])
-        OUTPUT_DIR = os.path.join(OUTPUT_DIR, "replay" +  TRACE_PATH.split("record")[1][0] + ".")
+        out = os.path.join(OUTPUT_DIR, app["name"], app["variation"])
+        out = os.path.join(out, "replay" +  TRACE_PATH.split("record")[1][0] + ".")
 
         for i in range(config["repetitions"]):
             command = RUN_BENCH + ' -Mode "replay" ' + \
                       '-TraceFile "' + TRACE_PATH + '" ' + \
-                      '-OutDir "' + OUTPUT_DIR + str(i) + '" ' + \
+                      '-OutDir "' + out + str(i) + '" ' + \
                       '-SteamAppID "' + app['steam_app_id'] + '" ' + \
                       '-SteamAppExe "' + app['exe_name'] + '" ' + \
                       '-AppStartupTime ' + str(app['startup_time'])
@@ -83,3 +83,21 @@ if __name__ == "__main__":
 #     "bandwidth_KBps": 2500,
 #     "drop_chance": -1
 #   },
+    
+# ,
+    # {
+    #   "name": "BeatSaber",
+    #   "variation": "PopStars-Medium",
+    #   "exe_name": "Beat Saber.exe",
+    #   "steam_app_id": "620980",
+    #   "startup_time": 5,
+    #   "trace_path": "BeatSaber\\PopStars-Medium\\record1\\PopStars-Medium.txt"
+    # },
+    # {
+    #   "name": "BeatSaber",
+    #   "variation": "PopStars-Medium",
+    #   "exe_name": "Beat Saber.exe",
+    #   "steam_app_id": "620980",
+    #   "startup_time": 5,
+    #   "trace_path": "BeatSaber\\PopStars-Medium\\record2\\PopStars-Medium.txt"
+    # }
