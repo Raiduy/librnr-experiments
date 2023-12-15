@@ -56,8 +56,8 @@ def main():
                       '-AppStartupTime ' + str(app['startup_time'])
             
             print(command)
-            # p = subprocess.Popen(['powershell.exe', command], stdout=sys.stdout)
-            # p.communicate()
+            p = subprocess.Popen(['powershell.exe', command], stdout=sys.stdout)
+            p.communicate()
 
             print("Stop app")
 
