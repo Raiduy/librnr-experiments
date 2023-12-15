@@ -44,7 +44,7 @@ def main():
 
     for app in config["apps"]:
         TRACE_PATH = os.path.join(current_dir, config['experiment_name'], config["device"], app["trace_path"])
-        OUTPUT_DIR = os.path.join(OUTPUT_DIR, app["name"])
+        OUTPUT_DIR = os.path.join(OUTPUT_DIR, app["name"], app["variation"])
         OUTPUT_DIR = os.path.join(OUTPUT_DIR, "replay" +  TRACE_PATH.split("record")[1][0] + ".")
 
         for i in range(config["repetitions"]):
@@ -56,8 +56,8 @@ def main():
                       '-AppStartupTime ' + str(app['startup_time'])
             
             print(command)
-            p = subprocess.Popen(['powershell.exe', command], stdout=sys.stdout)
-            p.communicate()
+            # p = subprocess.Popen(['powershell.exe', command], stdout=sys.stdout)
+            # p.communicate()
 
             print("Stop app")
 
