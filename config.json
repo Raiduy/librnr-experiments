@@ -1,13 +1,13 @@
 {
-  "experiment_name": "clumsy-validation-drop-chance-0.001",
+  "experiment_name": "clumsy-validation-bandwidth-50Mbps",
   "device": "Quest-2",
   "clumsy": {
     "clumsy_scripts_path": "C:\\Users\\radua\\VU_Ams\\MSc\\P2\\DS\\LabProject\\DistributedSystems-Traffic-Shaper\\Clumsy-Scripts\\",
     "clumsy_path": "C:\\Program Files\\Clumsy\\clumsy.exe",
     "delay": -1,
     "delay_chance": -1,
-    "bandwidth_KBps": -1,
-    "drop_chance": 0.001
+    "bandwidth_KBps": 6250,
+    "drop_chance": -1 
   },
   "repetitions": 3,
   "apps": [
