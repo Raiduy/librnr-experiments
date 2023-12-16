@@ -1,7 +1,15 @@
 {
-  "experiment_name": "validation",
-  "device": "Quest-Pro",
-  "repetitions": 8,
+  "experiment_name": "clumsy-validation-drop-chance-0.025",
+  "device": "Quest-2",
+  "clumsy": {
+    "clumsy_scripts_path": "C:\\Users\\radua\\VU_Ams\\MSc\\P2\\DS\\LabProject\\DistributedSystems-Traffic-Shaper\\Clumsy-Scripts\\",
+    "clumsy_path": "C:\\Program Files\\Clumsy\\clumsy.exe",
+    "delay": -1,
+    "delay_chance": -1,
+    "bandwidth_KBps": -1,
+    "drop_chance": 0.025
+  },
+  "repetitions": 3,
   "apps": [
     {
       "name": "BeatSaber",
