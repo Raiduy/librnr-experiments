@@ -8,7 +8,7 @@ from time import sleep
 def start_clumsy(clumsy):
     command = clumsy["clumsy_scripts_path"] + "start-clumsy.ps1 " + \
               "-ClumsyPath \"" + clumsy["clumsy_path"] + "\" " + \
-              "-AffectUpload $true  -AffectDownload $true "
+              "-AffectUpload $true -AffectDownload $true "
     if clumsy["delay"] != -1:
         command += "-Delay " + str(clumsy["delay"]) + " "
     if clumsy["delay_chance"] != -1:
@@ -50,7 +50,7 @@ def main():
         for i in range(config["repetitions"]):
             command = RUN_BENCH + ' -Mode "replay" ' + \
                       '-TraceFile "' + TRACE_PATH + '" ' + \
-                      '-OutDir "' + out + str(i) + '" ' + \
+                      '-OutDir "' + out + str(i+1) + '" ' + \
                       '-SteamAppID "' + app['steam_app_id'] + '" ' + \
                       '-SteamAppExe "' + app['exe_name'] + '" ' + \
                       '-AppStartupTime ' + str(app['startup_time'])
@@ -75,29 +75,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-# "clumsy": {
-#     "clumsy_scripts_path": "C:\\Users\\radua\\VU_Ams\\MSc\\P2\\DS\\LabProject\\DistributedSystems-Traffic-Shaper\\Clumsy-Scripts\\",
-#     "clumsy_path": "C:\\Program Files\\Clumsy\\clumsy.exe",
-#     "delay": -1,
-#     "delay_chance": -1,
-#     "bandwidth_KBps": 2500,
-#     "drop_chance": -1
-#   },
-    
-# ,
-    # {
-    #   "name": "BeatSaber",
-    #   "variation": "PopStars-Medium",
-    #   "exe_name": "Beat Saber.exe",
-    #   "steam_app_id": "620980",
-    #   "startup_time": 5,
-    #   "trace_path": "BeatSaber\\PopStars-Medium\\record1\\PopStars-Medium.txt"
-    # },
-    # {
-    #   "name": "BeatSaber",
-    #   "variation": "PopStars-Medium",
-    #   "exe_name": "Beat Saber.exe",
-    #   "steam_app_id": "620980",
-    #   "startup_time": 5,
-    #   "trace_path": "BeatSaber\\PopStars-Medium\\record2\\PopStars-Medium.txt"
-    # }
+
