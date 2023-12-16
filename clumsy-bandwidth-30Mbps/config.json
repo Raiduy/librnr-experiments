@@ -1,8 +1,8 @@
 {
-    "experiment_name": "clumsy-validation-bandwidth-30Mbps",
-    "device": "Quest-Pro",
+    "experiment_name": "clumsy-bandwidth-30Mbps",
+    "device": "Quest-2",
     "clumsy": {
-        "clumsy_scripts_path": "C:\\Users\\damla\\Documents\\GitHub\\DistributedSystems-Traffic-Shaper\\Clumsy-Scripts\\",
+        "clumsy_scripts_path": "C:\\Users\\radua\\VU_Ams\\MSc\\P2\\DS\\LabProject\\DistributedSystems-Traffic-Shaper\\Clumsy-Scripts\\",
         "clumsy_path": "C:\\Program Files\\Clumsy\\clumsy.exe",
         "delay": -1,
         "delay_chance": -1,
