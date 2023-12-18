@@ -1,5 +1,14 @@
 # librnr-experiments
 
+## Experiment folder structure
+Old experiments are stored in the `old-experiments` folder. 
+
+New experiments are in the root of the project under the following names:
+* `clumsy-<parameter>-<value>`: Experiments with **clumsy enabled**. Can be used for clumsy validation + other experiments.
+* `overhead-validation`: Experiments with **clumsy disabled**. Used to validate the overhead of the trace replaying. This folder contains runs with the layer **disabled** (`baseline`), **enabled and recording** (`record<number>`), and **enabled and replaying** (`replay<recording-number>.<replay-number>`).
+
+These experiments cover the entire list of experiments that are proposed in the overleaf document (check Paul's sexy table). For questions or complaints, please contact the contributors to the repo except for Damla and Radu. 🙃
+
 ## Before opening Quest Link
 1. Connect Quest to PC via cable.
 2. In a terminal, run `adb devices` to verify that Quest is connected.

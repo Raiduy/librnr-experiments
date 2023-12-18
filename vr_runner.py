@@ -8,7 +8,7 @@ from time import sleep
 def start_clumsy(clumsy):
     command = clumsy["clumsy_scripts_path"] + "start-clumsy.ps1 " + \
               "-ClumsyPath \"" + clumsy["clumsy_path"] + "\" " + \
-              "-AffectUpload $true "
+              "-AffectUpload $true -AffectDownload $true "
     if clumsy["delay"] != -1:
         command += "-Delay " + str(clumsy["delay"]) + " "
     if clumsy["delay_chance"] != -1:
@@ -36,20 +36,21 @@ def main():
     with open(config_file) as f:
         config = json.load(f)
 
-    start_clumsy(config["clumsy"])
+    if "clumsy" in config:
+        start_clumsy(config["clumsy"])
 
     OUTPUT_DIR = os.path.join(current_dir, config["experiment_name"], config["device"])
     RUN_BENCH = os.path.join(current_dir, "runbench.ps1")
 
     for app in config["apps"]:
-        TRACE_PATH = os.path.join(current_dir, config["device"], app["trace_path"])
-        OUTPUT_DIR = os.path.join(OUTPUT_DIR, app["name"])
-        OUTPUT_DIR = os.path.join(OUTPUT_DIR, "replay" +  TRACE_PATH.split("record")[1][0] + ".")
+        TRACE_PATH = os.path.join(current_dir, config['experiment_name'], config["device"], app["trace_path"])
+        out = os.path.join(OUTPUT_DIR, app["name"], app["variation"])
+        out = os.path.join(out, "replay" +  TRACE_PATH.split("record")[1][0] + ".")
 
         for i in range(config["repetitions"]):
             command = RUN_BENCH + ' -Mode "replay" ' + \
                       '-TraceFile "' + TRACE_PATH + '" ' + \
-                      '-OutDir "' + OUTPUT_DIR + str(i) + '" ' + \
+                      '-OutDir "' + out + str(i) + '" ' + \
                       '-SteamAppID "' + app['steam_app_id'] + '" ' + \
                       '-SteamAppExe "' + app['exe_name'] + '" ' + \
                       '-AppStartupTime ' + str(app['startup_time'])
@@ -67,8 +68,11 @@ def main():
     with open(os.path.join(current_dir, config['experiment_name'], "config.json"), 'w') as outfile:
         json.dump(config, outfile, indent=4)
 
-    stop_clumsy(config["clumsy"])
+    if "clumsy" in config:
+        stop_clumsy(config["clumsy"])
 
 
 if __name__ == "__main__":
     main()
+
+
