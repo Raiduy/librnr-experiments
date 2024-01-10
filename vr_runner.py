@@ -50,7 +50,7 @@ def main():
         for i in range(config["repetitions"]):
             command = RUN_BENCH + ' -Mode "replay" ' + \
                       '-TraceFile "' + TRACE_PATH + '" ' + \
-                      '-OutDir "' + out + str(i+1) + '" ' + \
+                      '-OutDir "' + out + str(i) + '" ' + \
                       '-SteamAppID "' + app['steam_app_id'] + '" ' + \
                       '-SteamAppExe "' + app['exe_name'] + '" ' + \
                       '-AppStartupTime ' + str(app['startup_time'])
