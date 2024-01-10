@@ -1,4 +1,4 @@
 test-script
 *Version.txt
 paths1.json
-*.csv
+.ipynb_checkpoints
