@@ -1,7 +1,7 @@
 {
-    "experiment_name": "validation",
-    "device": "Quest-2",
-    "repetitions": 10,
+    "experiment_name": "overhead-validation-redo",
+    "device": "Quest-Pro",
+    "repetitions": 1,
     "apps": [
         {
             "name": "BeatSaber",
@@ -9,7 +9,7 @@
             "exe_name": "Beat Saber.exe",
             "steam_app_id": "620980",
             "startup_time": 5,
-            "trace_path": "BeatSaber\\PopStars-Medium\\record2\\PopStars-Medium.txt"
+            "trace_path": "BeatSaber\\PopStars-Medium\\record0\\PopStars-Medium.txt"
         }
     ],
     "time_between_apps": 10,
