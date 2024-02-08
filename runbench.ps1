@@ -21,7 +21,7 @@ $functions = {
         adb shell "cat /proc/cpuinfo" >> "$OutDir\cpuinfo.log"
 
         $VrJob = Start-Job -ScriptBlock { adb logcat -s VrApi >> "$using:OutDir\logcat_VrApi.log" }
-        $HostJob = Start-Job -ScriptBlock { python "$using:PSScriptRoot\sample-host-metrics.py" $using:OutDir }
+        $HostJob = Start-Job -ScriptBlock { C:/Users/damla/AppData/Local/Microsoft/WindowsApps/python3.11.exe "$using:PSScriptRoot\sample-host-metrics.py" $using:OutDir }
         $OVRGPUJob = Start-Job -ScriptBlock { adb shell ovrgpuprofiler -r"$OVRGPUMetrics" | ForEach-Object{"{0} - {1}" -f (Get-Date),$_} >> "$using:OutDir\ovr_gpu_metrics.log" }
 
         $Freq = [System.Diagnostics.Stopwatch]::Frequency
@@ -43,7 +43,7 @@ $functions = {
                 if ($HostJob.State -ne "Running")
                 {
                     Write-Host "Oh no! Restarting python script"
-                    $HostJob = Start-Job -ScriptBlock { python "$using:PSScriptRoot\sample-host-metrics.py" $using:OutDir }
+                    $HostJob = Start-Job -ScriptBlock { C:/Users/damla/AppData/Local/Microsoft/WindowsApps/python3.11.exe "$using:PSScriptRoot\sample-host-metrics.py" $using:OutDir }
                 }
                 if ($OVRGPUJob.State -ne "Running")
                 {
