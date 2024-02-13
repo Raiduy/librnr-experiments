@@ -1,5 +1,17 @@
 # librnr-experiments
 
+## Figures List
+| Figure Number | Description | Origin File Location |
+|---------------|-------------|---------------|
+| 1             |  Meta Quest Pro power use when using different bandwidth limits. | [./new_bm.ipynb](./new_bm.ipynb) |
+| 4             |   Timing accuracy (i.e., error) of librnr over time (top plot) and as a statistical summary (bottom plot). | TODO:Add file location |
+| 5             |  librnr energy overhead on Meta Quest Pro (MQP) and Meta Quest 2 (MQ2). | [./analysis_BM.ipynb](./analysis_BM.ipynb) |
+| 6             |  librnr GPU-usage overhead on the two PCs. | [./analysis_BM.ipynb](./analysis_BM.ipynb) |
+| 7             |   Effect of bandwidth limitation on power consumption for the Quest Pro (MQP) and Quest 2 (MQ2) VR devices. | [./new_bm.ipynb](./new_bm.ipynb) |
+| 8             |   Effect of bandwidth limits on Meta Quest 2 frames per second (FPS). |  [./new_systemmetrics.ipynb](./new_systemmetrics.ipynb) |
+| 9             |   Cumulative probability density function for the frames per second (FPS) on Meta Quest. | [./fps_bandwithlimit_analysis.ipynb](./fps_bandwithlimit_analysis.ipynb) |
+| 10            |   Comparison in workload offloading between Meta Quest 2 (MQ2) and Meta Quest Pro (MQP). | [./analysis_BM.ipynb](./analysis_BM.ipynb) |
+
 ## Trace List
 | Trace Folder Name                  | Game / App | Duration of trace |  PC  |     VR    |       Network Conditions      | Additional Info       | Location | Paper Section |
 |------------------------------------|:----------:|:-----------------:|:----:|:---------:|:-----------------------------:|-----------------------|----------|---------------|
