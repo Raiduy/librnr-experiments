@@ -1,15 +1,15 @@
 {
-    "experiment_name": "overhead-validation",
-    "device": "Quest-Pro",
-    "repetitions": 9,
+    "experiment_name": "haptic-traces",
+    "device": "Quest-2",
+    "repetitions": 1,
     "apps": [
         {
             "name": "BeatSaber",
-            "variation": "PopStars-Medium",
+            "variation": "100Bills-Easy",
             "exe_name": "Beat Saber.exe",
             "steam_app_id": "620980",
-            "startup_time": 17,
-            "trace_path": "BeatSaber\\PopStars-Medium\\record2\\PopStars-Medium.txt"
+            "startup_time": 15,
+            "trace_path": "BeatSaber\\100Bills-Easy\\record0\\100Bills-Easy.txt"
         }
     ],
     "time_between_apps": 10,
