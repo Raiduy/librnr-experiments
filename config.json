@@ -1,14 +1,6 @@
 {
-    "experiment_name": "clumsy-bandwidth-100Mbps",
+    "experiment_name": "investigation",
     "device": "Quest-Pro",
-    "clumsy": {
-      "clumsy_scripts_path": "C:\\Users\\radua\\VU_Ams\\MSc\\P2\\DS\\LabProject\\DistributedSystems-Traffic-Shaper\\Clumsy-Scripts\\",
-      "clumsy_path": "C:\\Program Files\\Clumsy\\clumsy.exe",
-      "delay": -1,
-      "delay_chance": -1,
-      "bandwidth_KBps": 12500,
-      "drop_chance": -1
-    },
     "repetitions": 10,
     "apps": [
         {
