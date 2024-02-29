@@ -1,12 +1,12 @@
 {
-    "experiment_name": "clumsy-bandwidth-80Mbps",
+    "experiment_name": "clumsy-bandwidth-50Mbps",
     "device": "Quest-Pro",
     "clumsy": {
       "clumsy_scripts_path": "C:\\Users\\damla\\Documents\\GitHub\\DistributedSystems-Traffic-Shaper\\Clumsy-Scripts\\",
       "clumsy_path": "C:\\Program Files\\Clumsy\\clumsy.exe",
       "delay": -1,
       "delay_chance": -1,
-      "bandwidth_KBps": 10000,
+      "bandwidth_KBps": 6250,
       "drop_chance": -1
     },
     "repetitions": 1,
