@@ -45,7 +45,7 @@ def main():
     for app in config["apps"]:
         TRACE_PATH = os.path.join(current_dir, config['experiment_name'], config["device"], app["trace_path"])
         out = os.path.join(OUTPUT_DIR, app["name"], app["variation"])
-        out = os.path.join(out, "low_light_novoid" +  TRACE_PATH.split("record")[1][0] + ".")
+        out = os.path.join(out, "hide_controllers" +  TRACE_PATH.split("record")[1][0] + ".")
 
         for i in range(config["repetitions"]):
             command = RUN_BENCH + ' -Mode "replay" ' + \
