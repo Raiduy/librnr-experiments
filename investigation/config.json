@@ -1,6 +1,6 @@
 {
     "experiment_name": "investigation",
-    "device": "Quest-2",
+    "device": "Quest-Pro",
     "repetitions": 5,
     "apps": [
         {
